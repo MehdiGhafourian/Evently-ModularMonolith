@@ -1,0 +1,13 @@
+services:
+  evently.api:
+    image: ${DOCKER_REGISTRY-}eventlyapi
+    container_name: Evently.Api
+    build:
+      context: .
+      dockerfile: src/API/Evently.Api/Dockerfile
+  
+  evently.database:
+    image: postgres:17.5
+
+volumes:
+  postgres_evently:
