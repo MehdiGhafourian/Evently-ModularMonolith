@@ -5,7 +5,10 @@
   </Folder>
   <Folder Name="/src/Modules/" />
   <Folder Name="/src/Modules/Events/">
-    <Project Path="src/Modules/Events/Evently.Modules.Events.Api/Evently.Modules.Events.Api.csproj" />
+    <Project Path="src/Modules/Events/Evently.Modules.Events.Application/Evently.Modules.Events.Application.csproj" Id="a2501066-f3bb-430e-9e70-0bfe41b6e745" />
+    <Project Path="src/Modules/Events/Evently.Modules.Events.Domain/Evently.Modules.Events.Domain.csproj" Id="82ab6b4d-a1f4-4290-b44d-4a6fd65b4a06" />
+    <Project Path="src/Modules/Events/Evently.Modules.Events.Infrastructure/Evently.Modules.Events.Infrastructure.csproj" Id="e6356f94-89d0-43e1-a63a-fde4d6ca9bbc" />
+    <Project Path="src/Modules/Events/Evently.Modules.Events.Presentation/Evently.Modules.Events.Presentation.csproj" Id="9cf95d87-4fd9-4ccd-bd76-7270d6f331f6" />
   </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
