@@ -3,10 +3,7 @@ using Dapper;
 using Evently.Modules.Events.Application.Abstraction.Data;
 using MediatR;
 
-namespace Evently.Modules.Events.Application.Events;
-
-public sealed record GetEventQuery(Guid EventId) : IRequest<EventResponse?>;
-
+namespace Evently.Modules.Events.Application.Events.GetEvent;
 
 internal sealed class GetEventQueryHandler(IDbConnectionFactory dbConnectionFactory) : IRequestHandler<GetEventQuery, EventResponse?>
 {
