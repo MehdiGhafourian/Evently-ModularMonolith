@@ -13,6 +13,7 @@ internal static class CreateEvent
         app.MapPost("events", async (Request request, ISender sender) =>
         {
             var command = new CreateEventCommand(
+                request.CategoryId,
                 request.Title,
                 request.Description,
                 request.Location,
@@ -28,14 +29,16 @@ internal static class CreateEvent
 
     internal sealed class Request
     {
-        public string Title { get; set; }
+        public Guid CategoryId { get; init; }
 
-        public string Description { get; set; }
+        public string Title { get; init; }
 
-        public string Location { get; set; }
+        public string Description { get; init; }
 
-        public DateTime StartsAtUtc { get; set; }
+        public string Location { get; init; }
 
-        public DateTime? EndsAtUtc { get; set; }
+        public DateTime StartsAtUtc { get; init; }
+
+        public DateTime? EndsAtUtc { get; init; }
     }
 }
