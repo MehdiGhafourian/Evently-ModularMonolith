@@ -1,4 +1,5 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Modules.Events.Application.Abstraction.Messaging;
+using Evently.Modules.Events.Domain.Abstractions;
 using MediatR;
 
 namespace Evently.Modules.Events.Application.Events.CreateEvent;
@@ -9,5 +10,4 @@ public sealed record CreateEventCommand(
     string Description,
     string Location,
     DateTime StartsAtUtc,
-    DateTime? EndsAtUtc
-) : IRequest<Result<Guid>>;
+    DateTime? EndsAtUtc) : ICommand<Guid>;

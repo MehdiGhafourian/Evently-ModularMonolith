@@ -1,4 +1,6 @@
 ﻿using Evently.Modules.Events.Application.Events.CreateEvent;
+using Evently.Modules.Events.Domain.Abstractions;
+using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -20,9 +22,9 @@ internal static class CreateEvent
                 request.StartsAtUtc,
                 request.EndsAtUtc);
 
-            var eventId = await sender.Send(command);
+            Result<Guid> result = await sender.Send(command);
 
-            return Results.Ok(eventId);
+            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
         })
         .WithTags(Tags.Events);
     }

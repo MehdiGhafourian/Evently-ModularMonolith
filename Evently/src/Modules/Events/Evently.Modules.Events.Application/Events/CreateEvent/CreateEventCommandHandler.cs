@@ -1,4 +1,6 @@
-﻿using Evently.Modules.Events.Application.Abstraction.Data;
+﻿using Evently.Modules.Events.Application.Abstraction.Clock;
+using Evently.Modules.Events.Application.Abstraction.Data;
+using Evently.Modules.Events.Application.Abstraction.Messaging;
 using Evently.Modules.Events.Domain.Abstractions;
 using Evently.Modules.Events.Domain.Categories;
 using Evently.Modules.Events.Domain.Events;
@@ -6,11 +8,15 @@ using MediatR;
 
 namespace Evently.Modules.Events.Application.Events.CreateEvent;
 
-internal sealed class CreateEventCommandHandler(IEventRepository eventRepository, ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : IRequestHandler<CreateEventCommand, Result<Guid>>
+internal sealed class CreateEventCommandHandler(
+    IDateTimeProvider dateTimeProvider,
+    ICategoryRepository categoryRepository,
+    IEventRepository eventRepository,
+    IUnitOfWork unitOfWork) : ICommandHandler<CreateEventCommand, Guid>
 {
     public async Task<Result<Guid>> Handle(CreateEventCommand request, CancellationToken cancellationToken)
     {
-        if (request.StartsAtUtc < DateTime.UtcNow)
+        if (request.StartsAtUtc < dateTimeProvider.UtcNow)
         {
             return Result.Failure<Guid>(EventErrors.StartDateInPast);
         }
