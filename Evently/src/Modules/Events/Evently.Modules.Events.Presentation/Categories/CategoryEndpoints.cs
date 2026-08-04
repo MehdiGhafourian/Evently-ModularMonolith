@@ -7,5 +7,9 @@ public static class CategoryEndpoints
     public static void MapEndPoints(IEndpointRouteBuilder app)
     {
         ArchiveCategory.MapEndpoint(app);
+        CreateCategory.MapEndpoint(app);
+        GetCategory.MapEndpoint(app);
+        GetCategories.MapEndpoint(app);
+        UpdateCategory.MapEndpoint(app);
     }
 }
