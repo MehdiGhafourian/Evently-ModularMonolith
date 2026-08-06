@@ -1,6 +1,5 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
-
-namespace Evently.Modules.Events.Application.Abstraction.Exceptions;
+﻿using Evently.Common.Domain;
+namespace Evently.Common.Application.Exceptions;
 
 public class EventlyException : Exception
 {

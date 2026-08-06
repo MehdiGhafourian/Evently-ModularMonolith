@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Security.Principal;
-using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Common.Domain;
 using Evently.Modules.Events.Domain.Events;
 
 namespace Evently.Modules.Events.Domain.TicketTypes;

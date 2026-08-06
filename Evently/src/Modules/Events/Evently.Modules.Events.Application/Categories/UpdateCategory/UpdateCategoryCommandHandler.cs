@@ -1,6 +1,6 @@
-﻿using Evently.Modules.Events.Application.Abstraction.Data;
-using Evently.Modules.Events.Application.Abstraction.Messaging;
-using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Common.Application.Messaging;
+using Evently.Common.Domain;
+using Evently.Modules.Events.Application.Abstraction.Data;
 using Evently.Modules.Events.Domain.Categories;
 
 namespace Evently.Modules.Events.Application.Categories.UpdateCategory;

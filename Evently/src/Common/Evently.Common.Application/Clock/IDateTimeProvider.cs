@@ -1,4 +1,4 @@
-﻿namespace Evently.Modules.Events.Application.Abstraction.Clock;
+﻿namespace Evently.Common.Application.Clock;
 
 public interface IDateTimeProvider
 {
