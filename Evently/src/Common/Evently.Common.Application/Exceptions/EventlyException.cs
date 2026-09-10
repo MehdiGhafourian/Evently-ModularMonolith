@@ -7,6 +7,7 @@ public class EventlyException : Exception
     public Error? Error { get; }
 
     public EventlyException(string requestName, Error? error = default, Exception? innerException = default)
+        : base("Application exception", innerException)
     {
         RequestName = requestName;
         Error = error;
