@@ -9,8 +9,8 @@ services:
   evently.database:
     image: postgres:17.5
 
-  bookify-seq:
-    image: datalust/seq:latest
+  evently.seq:
+    image: datalust/seq:2026
     container_name: Evently.Seq
     environment:
       - ACCEPT_EULA=Y
