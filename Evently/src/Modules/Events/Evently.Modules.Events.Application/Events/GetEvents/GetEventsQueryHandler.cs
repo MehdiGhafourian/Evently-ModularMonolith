@@ -13,7 +13,7 @@ internal sealed class GetEventsQueryHandler(IDbConnectionFactory dbConnectionFac
     {
         await using DbConnection conenction = await dbConnectionFactory.OpenConnectionAsync();
 
-        const string sql = $$"""
+        const string sql = $"""
                              SELECT
                                  id AS {nameof(EventResponse.Id)},
                                  category_id AS {nameof(EventResponse.CategoryId)},

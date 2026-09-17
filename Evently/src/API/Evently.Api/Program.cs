@@ -2,6 +2,7 @@ using Evently.Api.Extensions;
 using Evently.Api.Middleware;
 using Evently.Common.Application;
 using Evently.Common.Infrastructure;
+using Evently.Common.Presentation.Endpoints;
 using Evently.Modules.Events.Infrastructure;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -24,7 +25,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddApplication([Evently.Modules.Events.Application.AssemblyReference.Assembly]);
 
-string  databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
+string databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
 string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
 builder.Services.AddInfrastructure(
     databaseConnectionString,
@@ -35,7 +36,7 @@ builder.Configuration.AddModuleConfiguration(["events"]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString)
-    .AddRedis(redisConnectionString); 
+    .AddRedis(redisConnectionString);
 
 builder.Services.AddEventsModule(builder.Configuration);
 
@@ -52,7 +53,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-EventsModule.MapEndpoints(app);
+app.MapEndpoints();
 
 app.MapHealthChecks("health", new HealthCheckOptions
 {
