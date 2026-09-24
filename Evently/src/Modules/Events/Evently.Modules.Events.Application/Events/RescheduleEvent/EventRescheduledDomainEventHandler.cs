@@ -1,0 +1,13 @@
+﻿using Evently.Common.Application.Messaging;
+using Evently.Common.Domain;
+using Evently.Modules.Events.Domain.Events;
+
+namespace Evently.Modules.Events.Application.Events.RescheduleEvent;
+
+internal sealed class EventRescheduledDomainEventHandler : IDomainEventHandler<EventRescheduledDomainEvent>
+{
+    public Task Handle(EventRescheduledDomainEvent doaminEvent, CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+}

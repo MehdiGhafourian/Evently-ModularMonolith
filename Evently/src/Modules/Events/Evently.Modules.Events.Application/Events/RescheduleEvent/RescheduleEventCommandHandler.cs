@@ -28,6 +28,8 @@ internal sealed class RescheduleEventCommandHandler(
 
         @event.Reschedule(request.StartsAtUtc, request.EndsAtUtc);
 
+        await unitOfWork.SaveChangesAsync(cancellationToken);
+
         return Result.Success();
     }
 
