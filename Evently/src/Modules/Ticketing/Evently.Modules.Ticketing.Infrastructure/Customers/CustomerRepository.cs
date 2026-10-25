@@ -1,16 +1,18 @@
 ﻿using Evently.Modules.Ticketing.Domain.Customers;
+using Evently.Modules.Ticketing.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Evently.Modules.Ticketing.Infrastructure.Customers;
 
-internal sealed class CustomerRepository : ICustomerRepository
+internal sealed class CustomerRepository(TicketingDbContext context) : ICustomerRepository
 {
-    public Task<Customer?> GetAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<Customer?> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await context.Customers.SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
 
     public void Insert(Customer customer)
     {
-        throw new NotImplementedException();
+        context.Customers.Add(customer);
     }
 }
